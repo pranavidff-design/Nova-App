@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Tier 1 permissions only. Nothing here touches SMS/OTP, banking, or camera by default.
+         Camera/mic-triggered actions are still gated by an in-app confirmation dialog
+         even though RECORD_AUDIO is required just to hear "Hey Nova" / commands at all. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Tier 2+ permissions (calls, contacts, calendar, notifications) are NOT declared here.
+         Add them only when you actually build those features — Android's Play Store review
+         and users both distrust apps that request permissions for features that don't exist yet. -->
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Nova"
+        android:theme="@style/Theme.Nova"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Nova">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MemoryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Nova" />
+
+    </application>
+
+</manifest>
